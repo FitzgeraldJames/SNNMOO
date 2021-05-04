@@ -8,5 +8,5 @@ type:
 
 .PHONY: analysis
 analysis:
-	(cd analysis; $(PYTHON) -m jupyter notebook )
+	(cd analysis; PYTHONPATH=../$(PYTHONPATH) $(PYTHON) -m jupyter notebook )
 

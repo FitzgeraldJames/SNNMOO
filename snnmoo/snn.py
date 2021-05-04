@@ -48,14 +48,14 @@ class SNNFirings:
         spikes_at_time['bin'] = spikes_at_time['time'] // interval
 
         bins = []
-        for time_bin in spikes_at_time.groupby('bin'):
+        for time, time_bin in spikes_at_time.groupby('bin'):
             time = min(time_bin['time'])
 
             bins.append({
                 'time': time, 
                 'num_fired': time_bin['num_fired'].mean(),
-                'excitatory': time_bin['ex_firings'].mean(),
-                'inhibitory': time_bin['in_firings'].mean()
+                'excitatory': time_bin['excitatory'].mean(),
+                'inhibitory': time_bin['inhibitory'].mean()
             })
 
         return pd.DataFrame(bins)
